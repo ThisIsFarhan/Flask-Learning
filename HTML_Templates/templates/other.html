@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Filters Page{% endblock %}
+
+{% block content %}
+    <h1>Hello from the filter html</h1>
+    <p>{{txt|upper}}</p>
+    <p>{{txt|lower}}</p>
+    <p>{{txt|title}}</p>
+    <p>{{txt|replace('text', 'a replaced text')}}</p>
+    <p>{{txt|reverse}}</p> <!---custom filter--->
+{% endblock %}

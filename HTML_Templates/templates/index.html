@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Index Page{% endblock %}
+
+{% block content %}
+    <h1>Hello from the rendered html</h1>
+    <p>{{value}}</p>
+    <p>{{res}}</p>
+    <ul>
+        {% for x in lst%}
+            {% if x <= 5 %}
+                <li>{{x}}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+    <a href="{{url_for('other')}}">LINK</a>
+{% endblock %}

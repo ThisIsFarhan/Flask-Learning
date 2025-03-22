@@ -1,0 +1,36 @@
+{% extends  'base.html' %}
+{% block title %}Index Page{% endblock %}
+{% block content %}
+    <h1>Hello from Index Page</h1>
+    <form method="POST" action="{{url_for('index')}}">
+        <input type="text" name="username" placeholder="Username"><br>
+        <input type="password" name="password" placeholder="Password"><br>
+        <input type="submit" value="Login">
+    </form>
+
+    <h1>File Upload</h1>
+    <form method="POST" action="{{url_for('file_upload')}}" enctype="multipart/form-data">
+        <input type="file" name="file" accept="text/plain"><br>
+        <input type="submit" value="Upload">
+    </form>
+
+    <h1>JSON request</h1>
+    <button id="post-button">SEND POST REQUEST</button>
+    <script type="text/javascript">
+        const postbtn = document.getElementById('post-button');
+        const jsondata = {name:"Farhan", greeting:"Hey there"}
+        postbtn.addEventListener('click',()=>{
+            fetch("{{url_for('handle_post')}}", {
+                method:'POST',
+                headers:{
+                    'Content-Type':'application/json; charset=utf-8'
+                },
+                body:JSON.stringify(jsondata)
+            }).then(response => response.json())
+            .then(data => console.log('Success:', data))
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        })
+    </script>
+{% endblock %}
